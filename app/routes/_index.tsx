@@ -1,21 +1,20 @@
-import type { MetaFunction } from "react-router";
-import { useTranslation } from "react-i18next";
-import HewittBuildersLogo from "~/components/HewittBuildersLogo";
+import { useTranslation } from "react-i18next"
+import type { MetaFunction } from "react-router"
+import HewittBuildersLogo from "~/components/nav/HewittBuildersLogo"
+import NavBar from "~/components/nav/nav-bar"
 
 export const meta: MetaFunction = () => {
-  return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
-  ];
-};
+	const { t } = useTranslation()
+	return [{ title: t("pageTitle") }, { name: "description", content: t("pageDescription") }]
+}
 
 export default function Index() {
-  const { t } = useTranslation();
-  return (
-    <div>
-
+	const { t } = useTranslation()
+	return (
+		<div>
+			<NavBar />
 			<HewittBuildersLogo />
-      <h1>{t("hi")}</h1>
-    </div>
-  );
+			<h1>{t("hi")}</h1>
+		</div>
+	)
 }

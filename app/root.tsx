@@ -3,6 +3,7 @@ import type { LinksFunction } from "react-router"
 import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration, useRouteError } from "react-router"
 import { useChangeLanguage } from "remix-i18next/react"
 import type { Route } from "./+types/root"
+import { ThemeProvider } from "./components/theme/theme-provider"
 import { LanguageSwitcher } from "./library/language-switcher"
 import { ClientHintCheck, getHints } from "./services/client-hints"
 import tailwindcss from "./tailwind.css?url"
@@ -44,7 +45,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
 			</head>
 			<body className="h-full w-full">
 				<LanguageSwitcher />
-				{children}
+				<ThemeProvider attribute="class">{children}</ThemeProvider>
 				<ScrollRestoration />
 				<Scripts />
 			</body>

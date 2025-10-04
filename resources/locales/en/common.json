@@ -1,5 +1,7 @@
 {
 	"hi": "React Router is awesome!",
+	"pageTitle": "Hewitt Builders",
+	"pageDescription": "Start your next project with Hewitt Builders today!",
 	"navigation": {
 		"back": "Go back",
 		"home": "Back to home"
