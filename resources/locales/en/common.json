@@ -2,6 +2,21 @@
 	"hi": "React Router is awesome!",
 	"pageTitle": "Hewitt Builders",
 	"pageDescription": "Start your next project with Hewitt Builders today!",
+	"purposeTitle": "Our Purpose",
+	"purposeDescription": "To enhance the construction experience and deliver on the promise that quality matters.",
+	"valuesTitle": "Our Core Values",
+	"valuesStewardship": {
+		"title": "Stewardship",
+		"description": " in building practices, communications, and team management."
+	},
+	"valuesIntegrity": {
+		"title": "Integrity",
+		"description": " in the process, the details, and the final product."
+	},
+	"valuesQuality": {
+		"title": "Quality",
+		"description": " in the experience, the materials, and the built structure."
+	},
 	"navigation": {
 		"back": "Go back",
 		"home": "Back to home"

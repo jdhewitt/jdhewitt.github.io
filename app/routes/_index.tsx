@@ -1,20 +1,54 @@
+import type { JSX } from "react"
 import { useTranslation } from "react-i18next"
 import type { MetaFunction } from "react-router"
 import HewittBuildersLogo from "~/components/nav/HewittBuildersLogo"
 import NavBar from "~/components/nav/nav-bar"
+import SubSection from "~/components/sub-section/sub-section"
+import { TypographyListContent, TypographyP } from "~/components/typography/typography-h2"
+import { Button } from "~/components/ui/button"
 
 export const meta: MetaFunction = () => {
 	const { t } = useTranslation()
 	return [{ title: t("pageTitle") }, { name: "description", content: t("pageDescription") }]
 }
 
+const valuesListItem = (valueTitle: string, valueDescription: string): JSX.Element => {
+	return (
+		<div key={valueDescription}>
+			<p className="leading-7 [&:not(:first-child)]:mt-6">
+				<span className="font-semibold text-lg italic">{valueTitle}</span>
+				{valueDescription}
+			</p>
+		</div>
+	)
+}
+
 export default function Index() {
 	const { t } = useTranslation()
+	const purposeTitle = t("purposeTitle")
+	const purposeDescription = t("purposeDescription")
+	const purposeContent = TypographyP(purposeDescription)
+
+	const valuesTitle = t("valuesTitle")
+	const valuesKeys = [
+		{ title: t("valuesStewardship.title"), description: t("valuesStewardship.description") },
+		{ title: t("valuesIntegrity.title"), description: t("valuesIntegrity.description") },
+		{ title: t("valuesQuality.title"), description: t("valuesQuality.description") },
+	]
+	const valuesContent: JSX.Element[] = valuesKeys.map((valueskey) => {
+		return valuesListItem(valueskey.title, valueskey.description)
+	})
 	return (
-		<div>
+		<div className="flex flex-col p-6">
 			<NavBar />
 			<HewittBuildersLogo />
-			<h1>{t("hi")}</h1>
+			<SubSection title={purposeTitle} content={purposeContent} />
+			<SubSection title={valuesTitle} content={TypographyListContent(valuesContent)} />
+			<div className="flex justify-center pt-8">
+				<Button asChild>
+					<a href="/login">Contact Us</a>
+				</Button>
+			</div>
 		</div>
 	)
 }
