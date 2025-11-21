@@ -1,13 +1,15 @@
 import type { JSX } from "react"
 import { useTranslation } from "react-i18next"
-import type { MetaFunction } from "react-router"
+import { href } from "react-router"
 import HewittBuildersLogo from "~/components/nav/HewittBuildersLogo"
 import NavBar from "~/components/nav/nav-bar"
 import SubSection from "~/components/sub-section/sub-section"
 import { TypographyListContent, TypographyP } from "~/components/typography/typography-h2"
 import { Button } from "~/components/ui/button"
+import { Link } from "~/library/link"
+import type { Route } from "./+types/home"
 
-export const meta: MetaFunction = () => {
+export function meta({}: Route.MetaArgs) {
 	const { t } = useTranslation()
 	return [{ title: t("pageTitle") }, { name: "description", content: t("pageDescription") }]
 }
@@ -38,6 +40,8 @@ export default function Index() {
 	const valuesContent: JSX.Element[] = valuesKeys.map((valueskey) => {
 		return valuesListItem(valueskey.title, valueskey.description)
 	})
+
+	const linkToHome = href("/")
 	return (
 		<div className="flex flex-col p-6">
 			<NavBar />
@@ -45,8 +49,8 @@ export default function Index() {
 			<SubSection title={purposeTitle} content={purposeContent} />
 			<SubSection title={valuesTitle} content={TypographyListContent(valuesContent)} />
 			<div className="flex justify-center pt-8">
-				<Button asChild>
-					<a href="/login">Contact Us</a>
+				<Button asChild size={"lg"}>
+					<Link to={linkToHome}>{"Contact Us"}</Link>
 				</Button>
 			</div>
 		</div>
