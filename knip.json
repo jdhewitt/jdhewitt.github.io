@@ -11,5 +11,5 @@
 		"app/components/typography/**",
 		"app/tailwind.css"
 	],
-	"ignoreDependencies": ["@babel/preset-typescript", "babel-plugin-react-compiler", "tailwindcss"]
+	"ignoreDependencies": ["@babel/preset-typescript", "babel-plugin-react-compiler", "tailwindcss", "tw-animate-css"]
 }
