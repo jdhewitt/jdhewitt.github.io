@@ -1,0 +1,59 @@
+{
+	"hi": "React Router is awesome!",
+	"pageTitle": "Hewitt Builders",
+	"pageDescription": "Start your next project with Hewitt Builders today!",
+	"purposeTitle": "Our Purpose",
+	"purposeDescription": "To enhance the construction experience and deliver on the promise that quality matters.",
+	"valuesTitle": "Our Core Values",
+	"valuesStewardship": {
+		"title": "Stewardship",
+		"description": " in building practices, communications, and team management."
+	},
+	"valuesIntegrity": {
+		"title": "Integrity",
+		"description": " in the process, the details, and the final product."
+	},
+	"valuesQuality": {
+		"title": "Quality",
+		"description": " in the experience, the materials, and the built structure."
+	},
+	"navigation": {
+		"back": "Go back",
+		"home": "Back to home",
+		"home_tab": "Home",
+		"about_tab": "About",
+		"contact_tab": "Contact Us"
+	},
+	"error": {
+		"500": {
+			"title": "Something went wrong!",
+			"description": "Looks like something unexpected happened on the server."
+		},
+		"404": {
+			"title": "Page Not found!",
+			"description": "Oops! The page you're looking for seems to have vanished into thin air."
+		},
+		"403": {
+			"title": "Unauthorized!",
+			"description": "Looks like you can't access this page."
+		},
+		"200": {
+			"title": "Something went wrong!",
+			"description": "Looks like something unexpected happened on the server."
+		}
+	},
+	"theme": {
+		"light": "Light",
+		"dark": "Dark",
+		"system": "System"
+	},
+	"about": {
+		"pageTitle": "About Hewitt Builders",
+		"pageDescription": "Learn more about David Hewitt, the founder of Hewitt Builders, and the rest of our team.",
+		"daveBioBackground": "David Hewitt is a Civil Engineer and licensed general contractor with experience in residential and commercial construction. David graduated from North Carolina State University's College of Engineering. While in college, he started his career in construction as a field engineer for a large construction company, later moving into a project management role. David has project management experience in several market segments, including multifamily homes, healthcare, and municipal.",
+		"daveBioFounderGoal": "As the founder of Hewitt Builders, David wants to restore confidence in the construction process and deliver high-quality projects. His strong work ethic and attention to detail, combined with a keen ability to problem-solve, enable him to set clear expectations and provide high-quality results."
+	},
+	"contact": {
+		"title": "Let's get to work."
+	}
+}
