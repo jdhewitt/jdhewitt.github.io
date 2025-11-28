@@ -1,12 +1,14 @@
 import { IconCheck, IconMoon, IconSun } from "@tabler/icons-react"
 import { useTheme } from "next-themes"
 import { useEffect } from "react"
+import { useTranslation } from "react-i18next"
 import { Button } from "~/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "~/components/ui/dropdown-menu"
 import { cn } from "~/lib/utils"
 
 export function ThemeSwitcher() {
 	const { theme, setTheme } = useTheme()
+	const { t } = useTranslation()
 
 	/* Update theme-color meta tag
 	 * when theme is updated */
@@ -27,14 +29,14 @@ export function ThemeSwitcher() {
 			</DropdownMenuTrigger>
 			<DropdownMenuContent align="end">
 				<DropdownMenuItem onClick={() => setTheme("light")}>
-					Light <IconCheck size={14} className={cn("ml-auto", theme !== "light" && "hidden")} />
+					{t("theme.light")} <IconCheck size={14} className={cn("ml-auto", theme !== "light" && "hidden")} />
 				</DropdownMenuItem>
 				<DropdownMenuItem onClick={() => setTheme("dark")}>
-					Dark
+					{t("theme.dark")}
 					<IconCheck size={14} className={cn("ml-auto", theme !== "dark" && "hidden")} />
 				</DropdownMenuItem>
 				<DropdownMenuItem onClick={() => setTheme("system")}>
-					System
+					{t("theme.system")}
 					<IconCheck size={14} className={cn("ml-auto", theme !== "system" && "hidden")} />
 				</DropdownMenuItem>
 			</DropdownMenuContent>

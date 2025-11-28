@@ -19,7 +19,10 @@
 	},
 	"navigation": {
 		"back": "Go back",
-		"home": "Back to home"
+		"home": "Back to home",
+		"home_tab": "Home",
+		"about_tab": "About",
+		"contact_tab": "Contact Us"
 	},
 	"error": {
 		"500": {
@@ -38,5 +41,10 @@
 			"title": "Something went wrong!",
 			"description": "Looks like something unexpected happened on the server."
 		}
+	},
+	"theme": {
+		"light": "Light",
+		"dark": "Dark",
+		"system": "System"
 	}
 }

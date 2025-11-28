@@ -19,7 +19,10 @@
 	},
 	"navigation": {
 		"back": "Regresar",
-		"home": "Volver al inicio"
+		"home": "Volver al inicio",
+		"home_tab": "Inicio",
+		"about_tab": "Acerca de",
+		"contact_tab": "Contáctenos"
 	},
 	"error": {
 		"500": {
@@ -38,5 +41,10 @@
 			"title": "¡Algo salió mal!",
 			"description": "Parece que algo inesperado sucedió en el servidor."
 		}
+	},
+	"theme": {
+		"light": "Claro",
+		"dark": "Oscuro",
+		"system": "Sistema"
 	}
 }
