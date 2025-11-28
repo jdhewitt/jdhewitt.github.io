@@ -24,6 +24,11 @@ export default async function handleRequest(
 	const lng = appContext.lang
 	const ns = i18nextOpts.getRouteNamespaces(context)
 
+	const ghPagesBasePath = "/jdhewitt.github.io";
+	const serverRouterUrl = request.url.startsWith(ghPagesBasePath)
+		? request.url
+		: ghPagesBasePath + new URL(request.url).pathname;
+
 	await instance
 		.use(initReactI18next) // Tell our instance to use react-i18next
 		.init({
@@ -38,7 +43,7 @@ export default async function handleRequest(
 
 		const { pipe, abort } = renderToPipeableStream(
 			<I18nextProvider i18n={instance}>
-				<ServerRouter context={context} url={request.url} />
+				<ServerRouter context={context} url={serverRouterUrl} />
 			</I18nextProvider>,
 			{
 				[callbackName]: () => {
