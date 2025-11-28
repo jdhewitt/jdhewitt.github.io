@@ -1,6 +1,15 @@
 import { useTranslation } from "react-i18next"
 import type { LinksFunction } from "react-router"
-import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration, useRouteError } from "react-router"
+import {
+	isRouteErrorResponse,
+	Links,
+	Meta,
+	Outlet,
+	Scripts,
+	ScrollRestoration,
+	useRouteError,
+	useRouteLoaderData,
+} from "react-router"
 import { useChangeLanguage } from "remix-i18next/react"
 import type { Route } from "./+types/root"
 import { ThemeProvider } from "./components/theme/theme-provider"
@@ -37,6 +46,7 @@ export default function App({ loaderData }: Route.ComponentProps) {
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
 	const { i18n } = useTranslation()
+	const { clientEnv } = useRouteLoaderData("root")
 	return (
 		<html className="overflow-y-auto overflow-x-hidden" lang={i18n.language} dir={i18n.dir()} suppressHydrationWarning>
 			<head>
@@ -47,7 +57,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
 				<Links />
 			</head>
 			<body className="h-full w-full">
-				<LanguageSwitcher />
+				{clientEnv.NODE_ENV === "development" && <LanguageSwitcher />}
 				<ThemeProvider attribute="class">{children}</ThemeProvider>
 				<ScrollRestoration />
 				<Scripts />
