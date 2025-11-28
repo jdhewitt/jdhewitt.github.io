@@ -42,7 +42,7 @@ export default function Index() {
 	const linkToContactUs = href("/contact")
 	return (
 		<div className="flex flex-col">
-			<HewittBuildersLogo />
+			<HewittBuildersLogo className="w-full max-w-[400px] self-center pt-6" />
 			<SubSection title={purposeTitle} content={purposeContent} />
 			<SubSection title={valuesTitle} content={TypographyListContent(valuesContent)} />
 			<div className="flex justify-center pt-8">

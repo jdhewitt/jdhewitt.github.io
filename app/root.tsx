@@ -14,7 +14,10 @@ export async function loader({ context, request }: Route.LoaderArgs) {
 	return { lang, clientEnv, hints }
 }
 
-export const links: LinksFunction = () => [{ rel: "stylesheet", href: tailwindcss }]
+export const links: LinksFunction = () => [
+	{ rel: "stylesheet", href: tailwindcss },
+	{ rel: "icon", href: "/favicon.ico?v=2" },
+]
 
 export const handle = {
 	i18n: "common",
