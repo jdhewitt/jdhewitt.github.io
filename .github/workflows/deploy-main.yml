@@ -1,39 +1,31 @@
-name: Deploy to GitHub Pages - Test
+name: GitHub Pages - Pages
 
 on:
   push:
     branches:
-      - main # Or 'main' depending on your default branch
-      - gh-pages
+      - main
 
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
+  deploy:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - name: Set up pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 10
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: '24'
-          cache: 'pnpm'
 
-      - name: Install dependencies
-        run: pnpm install
+      - run: pnpm install
+      - run: pnpm build
 
-      - name: Build
-        run: pnpm build
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build/client
-          publish_branch: gh-pages # Change to 'master' if you are sure
-          cname: ${{ secrets.CNAME }} # Optional: If you have a custom domain
+          publish_dir: ./build
