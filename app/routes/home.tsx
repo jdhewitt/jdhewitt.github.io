@@ -47,7 +47,7 @@ export default function Index() {
 			<SubSection title={valuesTitle} content={TypographyListContent(valuesContent)} />
 			<div className="flex justify-center pt-8">
 				<Button asChild size={"lg"}>
-					<Link to={linkToContactUs}>{"Contact Us"}</Link>
+					<Link to={linkToContactUs}>{t("navigation.contact_tab")}</Link>
 				</Button>
 			</div>
 		</div>
