@@ -1,0 +1,42 @@
+{
+	"hi": "¡React Router es increíble!",
+	"pageTitle": "Hewitt Builders",
+	"pageDescription": "¡Comience su próximo proyecto con Hewitt Builders hoy!",
+	"purposeTitle": "Nuestro Propósito",
+	"purposeDescription": "Mejorar la experiencia de construcción y cumplir la promesa de que la calidad importa.",
+	"valuesTitle": "Nuestros Valores Fundamentales",
+	"valuesStewardship": {
+		"title": "Administración",
+		"description": " en las prácticas de construcción, las comunicaciones y la gestión de equipos."
+	},
+	"valuesIntegrity": {
+		"title": "Integridad",
+		"description": " en el proceso, los detalles y el producto final."
+	},
+	"valuesQuality": {
+		"title": "Calidad",
+		"description": " en la experiencia, los materiales y la estructura construida."
+	},
+	"navigation": {
+		"back": "Regresar",
+		"home": "Volver al inicio"
+	},
+	"error": {
+		"500": {
+			"title": "¡Algo salió mal!",
+			"description": "Parece que algo inesperado sucedió en el servidor."
+		},
+		"404": {
+			"title": "¡Página no encontrada!",
+			"description": "¡Ups! La página que buscas parece haberse desvanecido en el aire."
+		},
+		"403": {
+			"title": "¡No autorizado!",
+			"description": "Parece que no puedes acceder a esta página."
+		},
+		"200": {
+			"title": "¡Algo salió mal!",
+			"description": "Parece que algo inesperado sucedió en el servidor."
+		}
+	}
+}

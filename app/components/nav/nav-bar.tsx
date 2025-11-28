@@ -12,19 +12,22 @@ import {
 
 const NavBar = (): JSX.Element => {
 	const linkToHome = href("/")
-	const linkToAbout = href("/about")
-	const linkToContactUs = href("/contact")
+	const linkToAbout = href("/")
+	const linkToContactUs = href("/")
 	return (
 		<NavigationMenu className="pb-4">
 			<NavigationMenuList>
 				<NavigationMenuItem>
 					<NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-						<a href="/">Home</a>
-						<Link to={linkToHome}>{"Contact Us"}</Link>
+						<Link to={linkToHome}>{"Home"}</Link>
 					</NavigationMenuLink>
+				</NavigationMenuItem>
+				<NavigationMenuItem>
 					<NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-						<Link to={linkToAbout}>{"Contact Us"}</Link>
+						<Link to={linkToAbout}>{"About"}</Link>
 					</NavigationMenuLink>
+				</NavigationMenuItem>
+				<NavigationMenuItem>
 					<NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
 						<Link to={linkToContactUs}>{"Contact Us"}</Link>
 					</NavigationMenuLink>

@@ -131,7 +131,7 @@ describe("Link", () => {
 		renderStub,
 	}) => {
 		const { getByText } = await renderStub({
-			entries: getEntries({ to: "/second", language: "bs" }),
+			entries: getEntries({ to: "/second", language: "es" }),
 			props: {
 				initialEntries: ["/first?lng=en"],
 			},
@@ -141,7 +141,7 @@ describe("Link", () => {
 		const url = getByText("/second")
 		await waitFor(() => {
 			expect(url.element()).toBeDefined()
-			expect(url.element()).toHaveTextContent("/second?lng=bs")
+			expect(url.element()).toHaveTextContent("/second?lng=es")
 		})
 	})
 
@@ -149,7 +149,7 @@ describe("Link", () => {
 		renderStub,
 	}) => {
 		const { getByText } = await renderStub({
-			entries: getEntries({ to: "/second", language: "bs", keepSearchParams: true }),
+			entries: getEntries({ to: "/second", language: "es", keepSearchParams: true }),
 			props: {
 				initialEntries: ["/first?a=a&lng=en"],
 			},
@@ -159,7 +159,7 @@ describe("Link", () => {
 		const url = getByText("/second")
 		await waitFor(() => {
 			expect(url.element()).toBeDefined()
-			expect(url.element()).toHaveTextContent("/second?a=a&lng=bs")
+			expect(url.element()).toHaveTextContent("/second?a=a&lng=es")
 		})
 	})
 })

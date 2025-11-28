@@ -1,8 +1,9 @@
+/** biome-ignore-all lint: pregenerated file*/
 @import "tailwindcss";
 @import "tw-animate-css";
 /*---break--- */
 @custom-variant dark (&:is(.dark *));
-/** biome-ignore lint/nursery/noUnknownAtRule: This is a rule for the Tailwind CSS file */
+
 @theme {
 	/* Your theme styles go here */
 	--animate-float: float 3s ease-in-out infinite;
@@ -126,10 +127,10 @@
 }
 /*---break--- */
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
+	* {
+		@apply border-border outline-ring/50;
 	}
-  body {
-    @apply bg-background text-foreground;
+	body {
+		@apply bg-background text-foreground;
 	}
 }

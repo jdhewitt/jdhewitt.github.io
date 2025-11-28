@@ -1,7 +1,7 @@
 import type { JSX } from "react"
 import { TypographyH2 } from "../typography/typography-h2"
 
-export type SubSectionProps = {
+type SubSectionProps = {
 	title: string
 	content: JSX.Element
 }

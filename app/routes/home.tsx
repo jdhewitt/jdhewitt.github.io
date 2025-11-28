@@ -7,9 +7,8 @@ import SubSection from "~/components/sub-section/sub-section"
 import { TypographyListContent, TypographyP } from "~/components/typography/typography-h2"
 import { Button } from "~/components/ui/button"
 import { Link } from "~/library/link"
-import type { Route } from "./+types/home"
 
-export function meta({}: Route.MetaArgs) {
+export function meta() {
 	const { t } = useTranslation()
 	return [{ title: t("pageTitle") }, { name: "description", content: t("pageDescription") }]
 }

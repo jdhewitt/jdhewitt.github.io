@@ -35,7 +35,7 @@ export default function App({ loaderData }: Route.ComponentProps) {
 export const Layout = ({ children }: { children: React.ReactNode }) => {
 	const { i18n } = useTranslation()
 	return (
-		<html className="overflow-y-auto overflow-x-hidden" lang={i18n.language} dir={i18n.dir()}>
+		<html className="overflow-y-auto overflow-x-hidden" lang={i18n.language} dir={i18n.dir()} suppressHydrationWarning>
 			<head>
 				<ClientHintCheck />
 				<meta charSet="utf-8" />

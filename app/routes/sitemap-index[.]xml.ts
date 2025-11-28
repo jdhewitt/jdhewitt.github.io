@@ -7,11 +7,11 @@ export const loader = async ({ request }: Route.LoaderArgs) => {
 	const sitemaps = generateSitemapIndex([
 		{
 			url: `${domain}/sitemap/en.xml`,
-			lastmod: "2024-07-17",
+			lastmod: "2025-11-27",
 		},
 		{
-			url: `${domain}/sitemap/bs.xml`,
-			lastmod: "2024-07-17",
+			url: `${domain}/sitemap/es.xml`,
+			lastmod: "2025-11-27",
 		},
 	])
 

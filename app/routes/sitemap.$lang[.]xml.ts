@@ -12,8 +12,10 @@ export const loader = async ({ request, params }: Route.LoaderArgs) => {
 		routes,
 		ignore: ["/resource/*"],
 		// Transforms the url before adding it to the sitemap
+		// @ts-expect-error -- params.lang exists
 		urlTransformer: (url) => `${url}?lng=${params.lang}`,
 		sitemapData: {
+			// @ts-expect-error -- params.lang exists
 			lang: params.lang,
 		},
 	})

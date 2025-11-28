@@ -1,11 +1,5 @@
 import * as Module from "./home"
 
-const routeComponentProps = {
-	loaderData: { timezoneDate: "2021-01-01T00:00:00.000Z" },
-	params: {},
-	// biome-ignore lint/suspicious/noExplicitAny: Matches are not used
-	matches: [] as any,
-}
 describe("Home route", () => {
 	it("should render the home page text properly in english", async ({ renderStub }) => {
 		const { getByText } = await renderStub({
@@ -13,7 +7,7 @@ describe("Home route", () => {
 				{
 					id: "home",
 					path: "/",
-					Component: () => Module.default(routeComponentProps),
+					Component: () => Module.default(),
 				},
 			],
 		})
@@ -25,23 +19,23 @@ describe("Home route", () => {
 		).not.toBeNull()
 	})
 
-	it("should render the home page text properly in bosnian", async ({ renderStub }) => {
+	it("should render the home page text properly in spanish", async ({ renderStub }) => {
 		const { getByText } = await renderStub({
 			entries: [
 				{
 					id: "home",
 					path: "/",
 
-					Component: () => Module.default(routeComponentProps),
+					Component: () => Module.default(),
 				},
 			],
 			i18n: {
-				lng: "bs",
+				lng: "es",
 			},
 		})
 
 		expect(
-			getByText("React Router je zakon!", {
+			getByText("¡React Router es increíble!", {
 				exact: false,
 			})
 		).not.toBeNull()
