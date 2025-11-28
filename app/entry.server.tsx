@@ -25,9 +25,15 @@ export default async function handleRequest(
 	const ns = i18nextOpts.getRouteNamespaces(context)
 
 	const ghPagesBasePath = "/jdhewitt.github.io";
-	const serverRouterUrl = request.url.startsWith(ghPagesBasePath)
+	// Create a dummy base URL to correctly parse relative paths with new URL()
+	const dummyBaseUrl = "http://localhost";
+	const urlToParse = new URL(request.url, dummyBaseUrl); // Use dummyBaseUrl as base
+	const serverRouterPath = request.url.startsWith(ghPagesBasePath)
 		? request.url
-		: ghPagesBasePath + new URL(request.url).pathname;
+		: ghPagesBasePath + urlToParse.pathname;
+
+	// Construct a full URL for ServerRouter
+	const fullServerRouterUrl = `http://${request.headers.get("host")}${serverRouterPath}`;
 
 	await instance
 		.use(initReactI18next) // Tell our instance to use react-i18next
@@ -43,7 +49,7 @@ export default async function handleRequest(
 
 		const { pipe, abort } = renderToPipeableStream(
 			<I18nextProvider i18n={instance}>
-				<ServerRouter context={context} url={serverRouterUrl} />
+				<ServerRouter context={context} url={fullServerRouterUrl} />
 			</I18nextProvider>,
 			{
 				[callbackName]: () => {
