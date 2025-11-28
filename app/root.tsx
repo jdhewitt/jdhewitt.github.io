@@ -2,6 +2,7 @@ import { clsx } from "clsx"
 import { useTranslation } from "react-i18next"
 import type { LinksFunction } from "react-router"
 import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration, useRouteError } from "react-router"
+import favicon from "../public/favicon.ico"
 import type { Route } from "./+types/root"
 import { ThemeProvider, useTheme } from "./components/theme/theme-provider"
 import { LanguageSwitcher } from "./library/language-switcher"
@@ -16,7 +17,7 @@ export async function loader({ context, request }: Route.LoaderArgs) {
 
 export const links: LinksFunction = () => [
 	{ rel: "stylesheet", href: tailwindcss },
-	{ rel: "icon", href: "/favicon.ico?v=2" },
+	{ rel: "icon", href: favicon },
 ]
 
 export const handle = {
