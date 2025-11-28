@@ -1,6 +1,5 @@
 import type { JSX } from "react"
 import { useTranslation } from "react-i18next"
-import NavBar from "~/components/nav/nav-bar"
 
 export function meta() {
 	const { t } = useTranslation()
@@ -11,8 +10,7 @@ const AboutPage = (): JSX.Element => {
 	const { t } = useTranslation()
 
 	return (
-		<div className="flex flex-col items-center p-6">
-			<NavBar />
+		<div>
 			<div className="mx-auto max-w-4xl text-center">
 				<img src="/DavidHewitt.jpg" alt="David Hewitt" className="mx-auto h-auto w-full max-w-sm rounded-lg" />
 				<p className="mt-8 text-lg">{t("about.daveBioBackground")}</p>

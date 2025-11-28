@@ -2,7 +2,6 @@ import type { JSX } from "react"
 import { useTranslation } from "react-i18next"
 import { href } from "react-router"
 import HewittBuildersLogo from "~/components/nav/HewittBuildersLogo"
-import NavBar from "~/components/nav/nav-bar"
 import SubSection from "~/components/sub-section/sub-section"
 import { TypographyListContent, TypographyP } from "~/components/typography/typography-h2"
 import { Button } from "~/components/ui/button"
@@ -40,16 +39,15 @@ export default function Index() {
 		return valuesListItem(valueskey.title, valueskey.description)
 	})
 
-	const linkToHome = href("/")
+	const linkToContactUs = href("/contact")
 	return (
-		<div className="flex flex-col p-6">
-			<NavBar />
+		<div className="flex flex-col">
 			<HewittBuildersLogo />
 			<SubSection title={purposeTitle} content={purposeContent} />
 			<SubSection title={valuesTitle} content={TypographyListContent(valuesContent)} />
 			<div className="flex justify-center pt-8">
 				<Button asChild size={"lg"}>
-					<Link to={linkToHome}>{"Contact Us"}</Link>
+					<Link to={linkToContactUs}>{"Contact Us"}</Link>
 				</Button>
 			</div>
 		</div>

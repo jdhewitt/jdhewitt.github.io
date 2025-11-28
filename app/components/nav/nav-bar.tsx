@@ -1,6 +1,7 @@
 import type { JSX } from "react"
 import { useTranslation } from "react-i18next"
 import { href } from "react-router"
+import { cn } from "~/lib/utils"
 import { Link } from "~/library/link"
 import { ThemeSwitcher } from "../theme/theme-switcher"
 import {
@@ -11,14 +12,14 @@ import {
 	navigationMenuTriggerStyle,
 } from "../ui/navigation-menu"
 
-const NavBar = (): JSX.Element => {
+const NavBar = ({ className }: { className?: string }): JSX.Element => {
 	const { t } = useTranslation()
 	const linkToHome = href("/")
 	const linkToAbout = href("/about")
-	const linkToContactUs = href("/")
+	const linkToContactUs = href("/contact")
 
 	return (
-		<NavigationMenu className="pb-4">
+		<NavigationMenu className={cn("pb-4", className)}>
 			<NavigationMenuList>
 				<NavigationMenuItem>
 					<NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
