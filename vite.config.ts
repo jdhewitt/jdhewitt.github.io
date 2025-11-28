@@ -7,7 +7,7 @@ import babel from "vite-plugin-babel"
 import { iconsSpritesheet } from "vite-plugin-icons-spritesheet"
 import tsconfigPaths from "vite-tsconfig-paths"
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
 	plugins: [
 		tailwindcss(),
 		// Run the react-compiler on .tsx files only when bundling
@@ -21,7 +21,7 @@ export default defineConfig({
 			}),
 			apply: "build",
 		},
-		reactRouterDevTools(),
+		mode === "development" && reactRouterDevTools(),
 		reactRouter(),
 		reactRouterHonoServer({
 			dev: {
@@ -36,10 +36,10 @@ export default defineConfig({
 			withTypes: true,
 			formatter: "biome",
 		}),
-	],
+	].filter(Boolean),
 	server: {
 		open: true,
 		// biome-ignore lint/style/noProcessEnv: Its ok to use process.env here
 		port: Number(process.env.PORT || 4280),
 	},
-})
+}))

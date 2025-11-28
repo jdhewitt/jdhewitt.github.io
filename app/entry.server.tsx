@@ -47,8 +47,7 @@ export default async function handleRequest(
 					responseHeaders.set("Content-Type", "text/html")
 
 					resolve(
-						// @ts-expect-error - We purposely do not define the body as existent so it's not used inside loaders as it's injected there as well
-						appContext.body(stream, {
+						new Response(stream, {
 							headers: responseHeaders,
 							status: didError ? 500 : responseStatusCode,
 						})

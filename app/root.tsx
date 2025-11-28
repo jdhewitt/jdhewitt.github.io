@@ -1,18 +1,9 @@
+import { clsx } from "clsx"
 import { useTranslation } from "react-i18next"
 import type { LinksFunction } from "react-router"
-import {
-	isRouteErrorResponse,
-	Links,
-	Meta,
-	Outlet,
-	Scripts,
-	ScrollRestoration,
-	useRouteError,
-	useRouteLoaderData,
-} from "react-router"
-import { useChangeLanguage } from "remix-i18next/react"
+import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration, useRouteError } from "react-router"
 import type { Route } from "./+types/root"
-import { ThemeProvider } from "./components/theme/theme-provider"
+import { ThemeProvider, useTheme } from "./components/theme/theme-provider"
 import { LanguageSwitcher } from "./library/language-switcher"
 import { ClientHintCheck, getHints } from "./services/client-hints"
 import tailwindcss from "./tailwind.css?url"
@@ -33,22 +24,27 @@ export const handle = {
 }
 
 export default function App({ loaderData }: Route.ComponentProps) {
-	const { lang, clientEnv } = loaderData
-	useChangeLanguage(lang)
+	const { clientEnv } = loaderData
 	return (
-		<>
-			<Outlet />
-			{/* biome-ignore lint/security/noDangerouslySetInnerHtml: We set the window.env variable to the client env */}
-			<script dangerouslySetInnerHTML={{ __html: `window.env = ${JSON.stringify(clientEnv)}` }} />
-		</>
+		<ThemeProvider attribute="class" defaultTheme={loaderData.hints.theme ?? "system"}>
+			<ThemedLayout clientEnv={clientEnv}>
+				<Outlet />
+			</ThemedLayout>
+		</ThemeProvider>
 	)
 }
 
-export const Layout = ({ children }: { children: React.ReactNode }) => {
+// biome-ignore lint/suspicious/noExplicitAny: Temporary for theme toggling
+export function ThemedLayout({ children, clientEnv }: { children: React.ReactNode; clientEnv: any }) {
 	const { i18n } = useTranslation()
-	const { clientEnv } = useRouteLoaderData("root")
+	const { resolvedTheme } = useTheme()
 	return (
-		<html className="overflow-y-auto overflow-x-hidden" lang={i18n.language} dir={i18n.dir()} suppressHydrationWarning>
+		<html
+			className={clsx("overflow-y-auto overflow-x-hidden", resolvedTheme)}
+			lang={i18n.language}
+			dir={i18n.dir()}
+			style={{ colorScheme: resolvedTheme }}
+		>
 			<head>
 				<ClientHintCheck />
 				<meta charSet="utf-8" />
@@ -57,9 +53,11 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
 				<Links />
 			</head>
 			<body className="h-full w-full">
-				{clientEnv.NODE_ENV === "development" && <LanguageSwitcher />}
-				<ThemeProvider attribute="class">{children}</ThemeProvider>
+				{clientEnv?.NODE_ENV === "development" && <LanguageSwitcher />}
+				{children}
 				<ScrollRestoration />
+				{/* biome-ignore lint/security/noDangerouslySetInnerHtml: We set the window.env variable to the client env */}
+				<script dangerouslySetInnerHTML={{ __html: `window.env = ${JSON.stringify(clientEnv ?? {})}` }} />
 				<Scripts />
 			</body>
 		</html>
