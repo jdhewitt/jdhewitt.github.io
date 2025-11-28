@@ -25,15 +25,24 @@ export default async function handleRequest(
 	const ns = i18nextOpts.getRouteNamespaces(context)
 
 	const ghPagesBasePath = "/jdhewitt.github.io";
-	// Create a dummy base URL to correctly parse relative paths with new URL()
 	const dummyBaseUrl = "http://localhost";
-	const urlToParse = new URL(request.url, dummyBaseUrl); // Use dummyBaseUrl as base
-	const serverRouterPath = request.url.startsWith(ghPagesBasePath)
-		? request.url
-		: ghPagesBasePath + urlToParse.pathname;
+	const urlToParse = new URL(request.url, dummyBaseUrl);
 
-	// Construct a full URL for ServerRouter
-	const fullServerRouterUrl = `http://${request.headers.get("host")}${serverRouterPath}`;
+	let serverRouterFinalPath = urlToParse.pathname;
+
+	// If the path starts with the ghPagesBasePath, strip it.
+	// This ensures the URL passed to ServerRouter is relative to the basename.
+	if (serverRouterFinalPath.startsWith(ghPagesBasePath)) {
+		serverRouterFinalPath = serverRouterFinalPath.substring(ghPagesBasePath.length);
+		// Ensure it starts with a '/' for consistency, especially for the root path
+		if (!serverRouterFinalPath.startsWith('/')) {
+			serverRouterFinalPath = '/' + serverRouterFinalPath;
+		}
+	}
+
+	// Construct a full URL for ServerRouter (keeping the scheme and host for Node.js URL constructor)
+	const fullServerRouterUrl = `http://${request.headers.get("host")}${serverRouterFinalPath}`;
+
 
 	await instance
 		.use(initReactI18next) // Tell our instance to use react-i18next
