@@ -14,7 +14,7 @@ import {
 const NavBar = (): JSX.Element => {
 	const { t } = useTranslation()
 	const linkToHome = href("/")
-	const linkToAbout = href("/")
+	const linkToAbout = href("/about")
 	const linkToContactUs = href("/")
 
 	return (

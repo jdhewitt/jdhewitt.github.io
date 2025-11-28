@@ -46,5 +46,11 @@
 		"light": "Claro",
 		"dark": "Oscuro",
 		"system": "Sistema"
+	},
+	"about": {
+		"pageTitle": "Acerca de Hewitt Builders",
+		"pageDescription": "Conozca más sobre David Hewitt, el fundador de Hewitt Builders, y el resto de nuestro equipo.",
+		"daveBioBackground": "David Hewitt es un Ingeniero Civil y contratista general con licencia con experiencia en construcción residencial y comercial. David se graduó de la Facultad de Ingeniería de la Universidad Estatal de Carolina del Norte. Mientras estaba en la universidad, comenzó su carrera en la construcción como ingeniero de campo para una gran empresa de construcción, pasando luego a un rol de gestión de proyectos. David tiene experiencia en gestión de proyectos en varios segmentos del mercado, incluyendo viviendas multifamiliares, atención médica y municipal.",
+		"daveBioFounderGoal": "Como fundador de Hewitt Builders, David quiere restaurar la confianza en el proceso de construcción y entregar proyectos de alta calidad. Su fuerte ética de trabajo y atención al detalle, combinadas con una aguda capacidad para resolver problemas, le permiten establecer expectativas claras y proporcionar resultados de alta calidad."
 	}
 }
