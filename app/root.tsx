@@ -3,17 +3,11 @@ import { useTranslation } from "react-i18next"
 import type { LinksFunction } from "react-router"
 import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration, useRouteError } from "react-router"
 import favicon from "../public/favicon.ico"
-import type { Route } from "./+types/root"
+
 import { ThemeProvider, useTheme } from "./components/theme/theme-provider"
 import { LanguageSwitcher } from "./library/language-switcher"
-import { ClientHintCheck, getHints } from "./services/client-hints"
+import { ClientHintCheck } from "./services/client-hints"
 import tailwindcss from "./tailwind.css?url"
-
-export async function loader({ context, request }: Route.LoaderArgs) {
-	const { lang, clientEnv } = context
-	const hints = getHints(request)
-	return { lang, clientEnv, hints }
-}
 
 export const links: LinksFunction = () => [
 	{ rel: "stylesheet", href: tailwindcss },
@@ -24,10 +18,10 @@ export const handle = {
 	i18n: "common",
 }
 
-export default function App({ loaderData }: Route.ComponentProps) {
-	const { clientEnv } = loaderData
+export default function App() {
+	const clientEnv = { NODE_ENV: import.meta.env.MODE }
 	return (
-		<ThemeProvider attribute="class" defaultTheme={loaderData.hints.theme ?? "system"}>
+		<ThemeProvider attribute="class" defaultTheme="system">
 			<ThemedLayout clientEnv={clientEnv}>
 				<Outlet />
 			</ThemedLayout>
