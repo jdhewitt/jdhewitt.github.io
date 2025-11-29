@@ -1,16 +1,14 @@
 import { generateSitemapIndex } from "@forge42/seo-tools/sitemap"
-import { createDomain } from "~/utils/http"
-import type { Route } from "./+types/sitemap-index[.]xml"
 
-export const loader = async ({ request }: Route.LoaderArgs) => {
-	const domain = createDomain(request)
+export const loader = async () => {
+	const domain = "https://darius-0x4d.github.io"
 	const sitemaps = generateSitemapIndex([
 		{
-			url: `${domain}/sitemap/en.xml`,
+			url: `${domain}/jdhewitt.github.io/sitemap.en.xml`,
 			lastmod: "2025-11-27",
 		},
 		{
-			url: `${domain}/sitemap/es.xml`,
+			url: `${domain}/jdhewitt.github.io/sitemap.es.xml`,
 			lastmod: "2025-11-27",
 		},
 	])

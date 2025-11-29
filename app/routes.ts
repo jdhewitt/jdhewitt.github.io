@@ -1,17 +1,13 @@
-import { index, type RouteConfig, route } from "@react-router/dev/routes"
+import { index, layout, type RouteConfig, route } from "@react-router/dev/routes"
 
 export default [
-	{
-		file: "./routes/_layout.tsx",
-		children: [
-			index("./routes/home.tsx"),
-			route("about", "./routes/about.tsx"),
-			route("contact", "./routes/contact.tsx"),
-		],
-	},
-	{ path: "/resource/:splat", file: "./routes/resource.locales.ts" },
-	{ path: "sitemap-index.xml", file: "./routes/sitemap-index[.]xml.ts" },
-	{ path: "sitemap.:lang.xml", file: "./routes/sitemap.$lang[.]xml.ts" },
-	{ path: "robots.txt", file: "./routes/robots[.]txt.ts" },
-	{ path: "*", file: "./routes/$.tsx" },
+	layout("./routes/_layout.tsx", [
+		index("./routes/home.tsx"),
+		route("about", "./routes/about.tsx"),
+		route("contact", "./routes/contact.tsx"),
+	]),
+	route("sitemap-index.xml", "./routes/sitemap-index[.]xml.ts"),
+	route("sitemap.:lang.xml", "./routes/sitemap.$lang[.]xml.ts"),
+	route("robots.txt", "./routes/robots[.]txt.ts"),
+	route("*", "./routes/$.tsx"),
 ] satisfies RouteConfig

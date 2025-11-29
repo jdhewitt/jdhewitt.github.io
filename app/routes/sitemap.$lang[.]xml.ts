@@ -1,9 +1,8 @@
 import { generateRemixSitemap } from "@forge42/seo-tools/remix/sitemap"
-import { createDomain } from "~/utils/http"
 import type { Route } from "./+types/sitemap.$lang[.]xml"
 
-export const loader = async ({ request, params }: Route.LoaderArgs) => {
-	const domain = createDomain(request)
+export const loader = async ({ params }: Route.LoaderArgs) => {
+	const domain = "https://darius-0x4d.github.io/jdhewitt.github.io"
 
 	const { routes } = await import("virtual:react-router/server-build")
 
