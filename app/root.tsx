@@ -35,6 +35,7 @@ export function ThemedLayout({ children, clientEnv }: { children: React.ReactNod
 	const { resolvedTheme } = useTheme()
 	return (
 		<html
+			suppressHydrationWarning
 			className={clsx("overflow-y-auto overflow-x-hidden", resolvedTheme)}
 			lang={i18n.language}
 			dir={i18n.dir()}
