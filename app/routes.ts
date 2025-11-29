@@ -5,9 +5,9 @@ export default [
 		index("./routes/home.tsx"),
 		route("about", "./routes/about.tsx"),
 		route("contact", "./routes/contact.tsx"),
+		route("*", "./routes/$.tsx"),
 	]),
 	route("sitemap-index.xml", "./routes/sitemap-index[.]xml.ts"),
 	route("sitemap.:lang.xml", "./routes/sitemap.$lang[.]xml.ts"),
 	route("robots.txt", "./routes/robots[.]txt.ts"),
-	route("*", "./routes/$.tsx"),
 ] satisfies RouteConfig
