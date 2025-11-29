@@ -31,10 +31,12 @@ jobs:
       - name: Build
         run: pnpm build
 
+      - name: Create 404.html fallback
+        run: cp ./build/client/index.html ./build/client/404.html
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build/client
           force_orphan: true
-          single_page: true
