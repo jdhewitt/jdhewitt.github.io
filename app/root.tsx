@@ -2,31 +2,26 @@ import { clsx } from "clsx"
 import { useTranslation } from "react-i18next"
 import type { LinksFunction } from "react-router"
 import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration, useRouteError } from "react-router"
-import type { Route } from "./+types/root"
+import favicon from "../public/favicon.ico"
+
 import { ThemeProvider, useTheme } from "./components/theme/theme-provider"
 import { LanguageSwitcher } from "./library/language-switcher"
-import { ClientHintCheck, getHints } from "./services/client-hints"
+import { ClientHintCheck } from "./services/client-hints"
 import tailwindcss from "./tailwind.css?url"
-
-export async function loader({ context, request }: Route.LoaderArgs) {
-	const { lang, clientEnv } = context
-	const hints = getHints(request)
-	return { lang, clientEnv, hints }
-}
 
 export const links: LinksFunction = () => [
 	{ rel: "stylesheet", href: tailwindcss },
-	{ rel: "icon", href: "/favicon.ico?v=2" },
+	{ rel: "icon", href: favicon },
 ]
 
 export const handle = {
 	i18n: "common",
 }
 
-export default function App({ loaderData }: Route.ComponentProps) {
-	const { clientEnv } = loaderData
+export default function App() {
+	const clientEnv = { NODE_ENV: import.meta.env.MODE }
 	return (
-		<ThemeProvider attribute="class" defaultTheme={loaderData.hints.theme ?? "system"}>
+		<ThemeProvider attribute="class" defaultTheme="system">
 			<ThemedLayout clientEnv={clientEnv}>
 				<Outlet />
 			</ThemedLayout>
@@ -40,6 +35,7 @@ export function ThemedLayout({ children, clientEnv }: { children: React.ReactNod
 	const { resolvedTheme } = useTheme()
 	return (
 		<html
+			suppressHydrationWarning
 			className={clsx("overflow-y-auto overflow-x-hidden", resolvedTheme)}
 			lang={i18n.language}
 			dir={i18n.dir()}

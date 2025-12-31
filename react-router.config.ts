@@ -6,6 +6,7 @@ export default {
 		unstable_splitRouteModules: true,
 		unstable_optimizeDeps: true,
 	},
+	ssr: false,
 	routeDiscovery: { mode: "initial" },
-	prerender: ["/", "/about", "/contact", "/sitemap-index.xml", "/sitemap.en.xml", "/sitemap.es.xml"],
+	prerender: true,
 } satisfies Config

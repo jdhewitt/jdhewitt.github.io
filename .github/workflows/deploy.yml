@@ -3,14 +3,16 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main # Or 'main' depending on your default branch
+      - main
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up pnpm
         uses: pnpm/action-setup@v2
@@ -18,7 +20,7 @@ jobs:
           version: 10
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '24'
           cache: 'pnpm'
@@ -29,10 +31,12 @@ jobs:
       - name: Build
         run: pnpm build
 
+      - name: Create 404.html fallback
+        run: cp ./build/client/index.html ./build/client/404.html
+
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build/client
-          publish_branch: gh-pages # Change to 'master' if you are sure
-          cname: ${{ secrets.CNAME }} # Optional: If you have a custom domain
+          force_orphan: true
