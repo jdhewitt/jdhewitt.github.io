@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://darius-0x4d.github.io/jdhewitt.github.io/sitemap-index.xml
