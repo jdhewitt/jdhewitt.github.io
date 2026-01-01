@@ -15,7 +15,7 @@ export function meta() {
 const valuesListItem = (valueTitle: string, valueDescription: string): JSX.Element => {
 	return (
 		<div key={valueDescription}>
-			<p className="leading-7 [&:not(:first-child)]:mt-6">
+			<p className="text-lg leading-8 [&:not(:first-child)]:mt-6">
 				<span className="font-semibold text-lg italic">{valueTitle}</span>
 				{valueDescription}
 			</p>
@@ -42,7 +42,7 @@ export default function Index() {
 	const linkToContactUs = href("/contact")
 	return (
 		<div className="flex flex-col">
-			<HewittBuildersLogo className="w-full max-w-[400px] self-center pt-6" />
+			<HewittBuildersLogo className="w-full max-w-[400px] self-center pt-6 pb-8" />
 			<SubSection title={purposeTitle} content={purposeContent} />
 			<SubSection title={valuesTitle} content={TypographyListContent(valuesContent)} />
 			<div className="flex justify-center pt-8">

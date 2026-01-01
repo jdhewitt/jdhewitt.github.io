@@ -18,8 +18,8 @@ export function TypographyLargeItalic(text: string) {
 	return <div className="font-semibold text-lg italic">{text}</div>
 }
 
-export function TypographyP(paragraphText: string) {
-	return <p className="leading-7 [&:not(:first-child)]:mt-6">{paragraphText}</p>
+export const TypographyP = (paragraphText: string) => {
+	return <p className="text-lg leading-8 [&:not(:first-child)]:mt-6">{paragraphText}</p>
 }
 
 export function TypographyListText(listItems: string[]): JSX.Element {
